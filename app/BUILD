@@ -29,23 +29,20 @@ scala_binary(
     classpath_resources = [
         "//conf:application.conf",
     ],
-    data = ["//public"],
     jvm_flags = [
         "-Dhttp.port=9000",
         "-Dapplication.name=bazel-play-example",
     ],
     main_class = "play.core.server.ProdServerStart",
     resources = [
-        # FIXME: I'm not sure how this bootstrap jar should be included.
         "@org_webjars_bootstrap_3_4_1//file:downloaded",
+        "//public",
     ],
     visibility = ["//visibility:public"],
     deps = DEPS + [
         "@maven//:com_typesafe_play_play_server_%s" % SCALA_VERSION,
         "@maven//:com_typesafe_play_play_guice_%s" % SCALA_VERSION,
         "@maven//:com_typesafe_play_play_akka_http_server_%s" % SCALA_VERSION,
-        # FIXME: I'm not sure how this bootstrap jar should be included.
-        "@maven//:org_webjars_bootstrap",
         ":domain",
     ],
 )
