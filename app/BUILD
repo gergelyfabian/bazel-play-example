@@ -14,6 +14,7 @@ DEPS = [
     "@maven//:com_typesafe_play_twirl_api_%s" % SCALA_VERSION,
     "@maven//:com_typesafe_akka_akka_http_core_%s" % SCALA_VERSION,
     "@maven//:com_typesafe_akka_akka_actor_%s" % SCALA_VERSION,
+    "@maven//:com_typesafe_akka_akka_stream_%s" % SCALA_VERSION,
     "@maven//:javax_inject_javax_inject",
     "@maven//:com_fasterxml_jackson_core_jackson_databind",
     "@maven//:com_fasterxml_jackson_core_jackson_core",
