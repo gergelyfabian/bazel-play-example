@@ -25,9 +25,3 @@ You will want to regenerate maven-install.json after changing dependencies with:
 ```bash
 bazel run @unpinned_maven//:pin
 ```
-
-### What's left
-
-* Fix Play static asset routing: CSS, JS, images
-* Fix stuff that Play includes magically with its sbt plugin. E.g. static assets that are not part
-  of the repo even, like jQuery js.

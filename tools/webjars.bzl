@@ -9,8 +9,8 @@ def unpack_webjar(name, webjar_target, play_prefix, jar_internal_path, files = [
         ],
         outs = outs,
         cmd = "unzip $(location %s) " % webjar_target +
-            " ".join(jar_internal_paths) + " " +
-            "-d . && " +
-            " && ".join(copy_commands),
+              " ".join(jar_internal_paths) + " " +
+              "-d . && " +
+              " && ".join(copy_commands),
         visibility = ["//visibility:public"],
     )
