@@ -36,7 +36,8 @@ scala_binary(
     main_class = "play.core.server.ProdServerStart",
     resources = [
         "//public",
-        "//public:unpack_webjar",
+        "//public:unpack_webjar_bootstrap",
+        "//public:unpack_webjar_jquery",
     ],
     visibility = ["//visibility:public"],
     deps = DEPS + [
