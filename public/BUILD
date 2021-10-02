@@ -1,4 +1,4 @@
-load("//tools:webjars.bzl", "unzip_files")
+load("@io_bazel_rules_play_utils//:unzip_files.bzl", "unzip_files")
 
 filegroup(
     name = "public",

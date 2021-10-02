@@ -166,3 +166,13 @@ bind(
     name = "default-play-routes-compiler-cli",
     actual = "@io_bazel_rules_play_routes//default-compiler-clis:scala_%s_play_2_8" % SCALA_VERSION.replace(".", "_"),
 )
+
+rules_play_utils_version = "19ef18a7aeb4e7807de1edd9cfa32a9d81189e4f"
+
+http_archive(
+    name = "io_bazel_rules_play_utils",
+    sha256 = "aeb7ea540c55dd0f28ea737741c65fb3d0db10863b45f029aa949c99071b36cb",
+    strip_prefix = "rules_play_utils-{}".format(rules_play_utils_version),
+    type = "zip",
+    url = "https://github.com/gergelyfabian/rules_play_utils/archive/{}.zip".format(rules_play_utils_version),
+)
