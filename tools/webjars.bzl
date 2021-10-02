@@ -1,16 +1,17 @@
-def unpack_webjar(name, webjar_target, play_prefix, jar_internal_path, files = []):
-    outs = ["%s/%s" % (play_prefix, file) for file in files]
-    jar_internal_paths = ["%s/%s" % (jar_internal_path, file) for file in files]
-    copy_commands = ["cp %s/%s $(location %s/%s)" % (jar_internal_path, file, play_prefix, file) for file in files]
+def unzip_files(name, zip_file, out_prefix, zip_prefix, files = []):
+    outs = ["%s/%s" % (out_prefix, file) for file in files]
+    zip_internal_paths = ["%s/%s" % (zip_prefix, file) for file in files]
+    copy_commands = ["cp %s/%s $(location %s/%s)" % (zip_prefix, file, out_prefix, file) for file in files]
     native.genrule(
         name = name,
         srcs = [
-            webjar_target,
+            zip_file,
         ],
         outs = outs,
-        cmd = "unzip $(location %s) " % webjar_target +
-              " ".join(jar_internal_paths) + " " +
+        cmd = "$(location @bazel_tools//tools/zip:zipper) x $(location %s) " % zip_file +
+              " ".join(zip_internal_paths) + " " +
               "-d . && " +
               " && ".join(copy_commands),
+        tools = ["@bazel_tools//tools/zip:zipper"],
         visibility = ["//visibility:public"],
     )

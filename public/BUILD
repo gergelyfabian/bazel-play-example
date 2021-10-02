@@ -1,4 +1,4 @@
-load("//tools:webjars.bzl", "unpack_webjar")
+load("//tools:webjars.bzl", "unzip_files")
 
 filegroup(
     name = "public",
@@ -6,7 +6,7 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 
-unpack_webjar(
+unzip_files(
     name = "unpack_webjar_bootstrap",
     files = [
         "css/bootstrap.css",
@@ -14,18 +14,18 @@ unpack_webjar(
         "css/bootstrap-theme.css",
         "css/bootstrap-theme.css.map",
     ],
-    jar_internal_path = "META-INF/resources/webjars/bootstrap/3.4.1",
-    play_prefix = "lib/bootstrap",
-    webjar_target = "@maven//:org_webjars_bootstrap",
+    out_prefix = "lib/bootstrap",
+    zip_file = "@maven//:org_webjars_bootstrap",
+    zip_prefix = "META-INF/resources/webjars/bootstrap/3.4.1",
 )
 
-unpack_webjar(
+unzip_files(
     name = "unpack_webjar_jquery",
     files = [
         "jquery.min.js",
         "jquery.min.map",
     ],
-    jar_internal_path = "META-INF/resources/webjars/jquery/1.11.1",
-    play_prefix = "lib/jquery",
-    webjar_target = "@maven//:org_webjars_jquery",
+    out_prefix = "lib/jquery",
+    zip_file = "@maven//:org_webjars_jquery",
+    zip_prefix = "META-INF/resources/webjars/jquery/1.11.1",
 )
